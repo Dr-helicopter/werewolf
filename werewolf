@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# werewolf launcher
+
+# Resolve the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Add your lua dir to the LUA_PATH environment variable
+export LUA_PATH="$SCRIPT_DIR/lua/?.lua;$SCRIPT_DIR/lua/?/init.lua;;"
+
+# Run init.lua with LuaJIT
+luajit "$SCRIPT_DIR/lua/init.lua" "$@"
